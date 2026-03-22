@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Linh Vu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── HOME HERO ── */
+    .hero {
+      background: var(--bg-dark);
+      color: white;
+      padding: calc(var(--nav-h) + 48px) clamp(32px, 6vw, 100px) 60px;
+      min-width: 600px;
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+    /* photo left */
+    .hero-photo {
+      width: 100%;
+      max-width: 340px;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+    .hero-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+    }
+    /* text right */
+    .hero-right-content { display: flex; flex-direction: column; }
+    .hero-name {
+      font-family: var(--serif); font-size: clamp(2.6rem, 4vw, 3.8rem);
+      font-weight: 400; line-height: 1.0; margin-bottom: 6px;
+      letter-spacing: -0.02em;
+    }
+    .hero-name em { font-style: italic; }
+    .hero-pronoun { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 20px; letter-spacing: 0.04em; }
+    .hero-socials { display: flex; gap: 8px; margin-bottom: 28px; flex-wrap: wrap; }
+    .hero-social-link {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      display: flex; align-items: center; justify-content: center; transition: background 0.2s;
+    }
+    .hero-social-link:hover { background: rgba(255,255,255,0.2); }
+    .hero-social-link svg { width: 14px; height: 14px; fill: white; }
+    .hero-bio { font-size: 14px; line-height: 1.8; color: rgba(255,255,255,0.72); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-brand">Linh Vu</span>
+  <div class="nav-links">
+    <a href="index.html" class="active">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="experience.html">Experience</a>
+    <a href="leadership.html">Leadership</a>
+  </div>
+  <div></div>
+</nav>
+
+<!-- HERO: photo left, name+socials+bio right -->
+<section class="hero" id="home">
+  <div class="hero-photo">
+    <img src="photo.jpeg" alt="Linh Vu" />
+  </div>
+  <div class="hero-right-content">
+    <h1 class="hero-name">Linh <em>Vu</em></h1>
+    <div class="hero-pronoun">she/her</div>
+    <div class="hero-socials">
+      <a href="mailto:linh.nt.vuu@gmail.com" class="hero-social-link" title="Email">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/linhvu11/" target="_blank" class="hero-social-link" title="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="https://github.com/linhvu115" target="_blank" class="hero-social-link" title="GitHub">
+        <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
+      <a href="https://www.facebook.com/YOUR_FB" target="_blank" class="hero-social-link" title="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://medium.com/@YOUR_MEDIUM" target="_blank" class="hero-social-link" title="Medium">
+        <svg viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+      </a>
+    </div>
+    <p class="hero-bio">
+      I am passionate about education, youth development, and bridging the gap between analytical methods with real-world business problems. My goal is to contribute to both research and teaching at the intersection of business analytics, digital transformation, and applied AI and machine learning.
+      <br><br>
+      I am actively looking for PhD opportunities in Information Systems, Business, Management, and related fields. Meanwhile, I work as a freelance tutor and academic coach/advisor for students from secondary school through undergraduate levels.
+    </p>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="section" id="education">
+  <div class="section-inner">
+    <div class="section-label-wrap reveal"><div class="section-label">Education</div></div>
+    <div class="section-content">
+      <div class="timeline reveal">
+
+        <div class="timeline-item">
+          <div class="timeline-dot">
+            <!-- graduation cap line-art -->
+            <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3.33 1.67 8.67 1.67 12 0v-5"/></svg>
+          </div>
+          <div class="timeline-card">
+            <div class="timeline-card-header">
+              <div class="timeline-card-title">Master of Science in Management</div>
+              <div class="timeline-card-date">
+                <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Jan 2025 – May 2026
+              </div>
+            </div>
+            <span class="timeline-card-org">Leeds Beckett University, United Kingdom</span>
+            <div class="edu-meta">Dean's Postgraduate Scholarship (2025 – 2026)</div>
+            <button class="coursework-toggle" onclick="toggleCW(this)">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              See coursework
+            </button>
+            <div class="coursework-panel">
+              <div class="cw-subhead">Dissertation</div>
+              <p><strong>"University-Industry Collaboration and Student Entrepreneurial Mindset Development in Vietnam"</strong> — semi-structured interviews, thematic analysis, strategic management theory, higher education policy, human capital development, entrepreneurship education</p>
+              <div class="cw-subhead">Relevant Coursework</div>
+              <p><strong>Corporate Strategy:</strong> portfolio analysis, digital transformation strategy, strategic change management</p>
+              <p><strong>Operations and Logistics Management:</strong> supply chain design, digital supply chain resilience, Industry 4.0 (IoT, RFID, ERP/SAP), lean/agile/JIT, sustainability in operations</p>
+              <p><strong>Contemporary Marketing:</strong> digital marketing strategy, omnichannel strategy, market segmentation, CRM, consumer behavior, customer lifecycle</p>
+              <p><strong>Managing People and Organizations:</strong> HRM strategy, organizational culture, motivational theory, leadership styles, workforce management</p>
+              <p><strong>Managing Financial Resources:</strong> financial reporting, ratio analysis, cost-volume-profit analysis, budgeting, investment appraisal (NPV, IRR)</p>
+              <p><strong>Risk Management:</strong> ERM, risk assessment matrices, ISO 31000 risk framework, operational and strategic risk, supply chain risk</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">
+            <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3.33 1.67 8.67 1.67 12 0v-5"/></svg>
+          </div>
+          <div class="timeline-card">
+            <div class="timeline-card-header">
+              <div class="timeline-card-title">Master of Science in Business Analytics</div>
+              <div class="timeline-card-date">
+                <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Aug 2023 – May 2024
+              </div>
+            </div>
+            <span class="timeline-card-org">Miami University, United States of America</span>
+            <ul class="edu-awards-list">
+              <li>Dean's List (Fall 2023)</li>
+              <li>International Education Scholarship (2023 – 2024)</li>
+              <li>RedHawk Excellence Scholarship (2023 – 2024)</li>
+            </ul>
+            <button class="coursework-toggle" onclick="toggleCW(this)">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              See coursework
+            </button>
+            <div class="coursework-panel">
+              <div class="cw-subhead">Relevant Coursework</div>
+              <p><strong>Data Warehousing and Business Intelligence (BI):</strong> data warehouse architecture, ETL processes, dimensional modeling (star/snowflake schema), BI tools</p>
+              <p><strong>Big Data:</strong> large-scale data integration, distributed computing, Python/SQL pipelines, feature engineering</p>
+              <p><strong>Data Mining in Business:</strong> classification, clustering, model evaluation, SMOTE, cross-validation</p>
+              <p><strong>Machine Learning (ML):</strong> ML algorithms, deployment in organizational settings, ensemble methods, neural networks, model interpretability</p>
+              <p><strong>Big Data Analytics and AI:</strong> NLP, deep learning fundamentals, LLM applications, cloud AI, chatbot/conversational AI development</p>
+              <p><strong>Communicating with Data:</strong> data storytelling, EDA, Python/R visualizations, executive-level reporting, dashboards</p>
+              <p><strong>Experimental Design and Causal Methods:</strong> A/B testing, propensity score matching, causal inference, difference-in-differences</p>
+              <p><strong>Systems Modeling and Optimization:</strong> linear programming, decision modeling, sensitivity analysis</p>
+              <p><strong>Prescriptive Analytics:</strong> optimization modeling, decision support systems, simulation</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">
+            <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3.33 1.67 8.67 1.67 12 0v-5"/></svg>
+          </div>
+          <div class="timeline-card">
+            <div class="timeline-card-header">
+              <div class="timeline-card-title">Bachelor of Science in Data Science &amp; Statistics</div>
+              <div class="timeline-card-date">
+                <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Aug 2020 – Jan 2024
+              </div>
+            </div>
+            <span class="timeline-card-org">Miami University, United States of America</span>
+            <ul class="edu-awards-list">
+              <li>Dean's List (Spring 2022)</li>
+              <li>International Education Scholarship (2020 – 2024)</li>
+              <li>RedHawk Excellence Scholarship (2020 – 2024)</li>
+              <li>English Composition Award (2021): Essay <em>"Ancestor Worship in Asian Culture: Cultural Belief or Superstition?"</em> published in <em>Rhethawks</em>, the official writing handbook of the Department of English.</li>
+            </ul>
+            <button class="coursework-toggle" onclick="toggleCW(this)">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              See coursework
+            </button>
+            <div class="coursework-panel">
+              <div class="cw-subhead">Relevant Coursework</div>
+              <p><strong>Programming Foundations:</strong> OOP, Java, data abstraction, data structures, web application programming, algorithmic thinking</p>
+              <p><strong>Database Systems:</strong> relational databases, SQL, schema design, query optimization</p>
+              <p><strong>Statistical Programming:</strong> R/SAS, Monte Carlo simulation, randomization tests, statistical computing</p>
+              <p><strong>Statistical Learning:</strong> supervised/unsupervised learning, model selection, overfitting/regularization</p>
+              <p><strong>Probability:</strong> Bayes' theorem, sampling distributions, moment generating functions</p>
+              <p><strong>Bayesian Statistics:</strong> prior/posterior distributions, probabilistic modeling, MCMC concepts</p>
+              <p><strong>Inferential Statistics:</strong> estimation theory, hypothesis testing, chi-square and F-distributions</p>
+              <p><strong>Forecasting:</strong> time series analysis, exponential smoothing, ARIMA, model evaluation</p>
+              <p><strong>Regression Analysis:</strong> partial F-tests, residual analysis, model adequacy, odds ratios, variable selection</p>
+              <p><strong>Experimental Design:</strong> randomized controlled trials, factorial design, blocking, pairwise comparisons</p>
+              <p><strong>Economics:</strong> applied econometrics, micro/macro-economics, market structures, fiscal/monetary policy</p>
+              <p><strong>Financial Accounting:</strong> financial statements, cost analysis, managerial decision-support</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="section-inner">
+    <div class="section-label-wrap reveal"><div class="section-label">Skills</div></div>
+    <div class="section-content reveal">
+      <div class="skills-two-col">
+        <div>
+          <div class="skills-col-head">Professional &amp; Transferable Skills</div>
+          <div class="skills-group"><div class="skills-group-title">Research &amp; Academic Thinking</div><div class="skills-category-desc">Critical thinking and analytical reasoning; independent and self-directed learning; interdisciplinary thinking (bridging statistics, business, and operations); academic and professional writing; science communication</div></div>
+          <div class="skills-group"><div class="skills-group-title">Communication &amp; Collaboration</div><div class="skills-category-desc">Collaborative teamwork in multi-disciplinary project groups; professional writing for multiple audiences</div></div>
+          <div class="skills-group"><div class="skills-group-title">Supervision &amp; Mentoring</div><div class="skills-category-desc">One-to-one academic coaching and mentoring; individualised feedback and formative assessment</div></div>
+          <div class="skills-group"><div class="skills-group-title">Organisation &amp; Self-Management</div><div class="skills-category-desc">Independent project management; managing concurrent academic commitments across institutions and time zones; deadline management under high-pressure environments</div></div>
+          <div class="skills-group"><div class="skills-group-title">Intercultural &amp; Global Competency</div><div class="skills-category-desc">Navigating Vietnamese, US, and UK academic and professional cultures; bilingual communication (Vietnamese/English)</div></div>
+        </div>
+        <div>
+          <div class="skills-col-head">Technical &amp; Research Skills</div>
+          <div class="skills-group"><div class="skills-group-title">Programming &amp; Data</div><div class="skills-category-desc">Python (Pandas, NumPy, scikit-learn, TensorFlow/Keras, Matplotlib, Seaborn, Plotly), Streamlit, R (tidyverse, ggplot2, GAM/mgcv, caret), SAS, SQL</div></div>
+          <div class="skills-group"><div class="skills-group-title">Data Engineering &amp; Cloud</div><div class="skills-category-desc">MySQL, AWS (RDS, Lex, Lambda), Docker, SQLAlchemy, Octoparse, ETL pipeline design</div></div>
+          <div class="skills-group"><div class="skills-group-title">Visualization &amp; BI</div><div class="skills-category-desc">Power BI, Tableau, Plotly, Matplotlib/Seaborn, R Markdown, ggplot2, Jupyter Notebook</div></div>
+          <div class="skills-group"><div class="skills-group-title">Machine Learning</div><div class="skills-category-desc">Supervised learning, unsupervised learning, ensemble methods (random forest, XGBoost), deep learning (LSTM, neural networks), recommendation systems (K-NN), model evaluation and deployment</div></div>
+          <div class="skills-group"><div class="skills-group-title">Research Methods</div><div class="skills-category-desc">Quantitative and qualitative research, semi-structured interviews, survey design, systematic literature review, academic writing, white paper reporting</div></div>
+          <div class="skills-group"><div class="skills-group-title">Productivity &amp; Automation</div><div class="skills-category-desc">Microsoft 365, WordPress, Power Platform (Power Apps, Power Automate), meeting facilitation, project artefact management</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LANGUAGES -->
+<section class="section" id="languages">
+  <div class="section-inner">
+    <div class="section-label-wrap reveal"><div class="section-label">Languages</div></div>
+    <div class="section-content reveal">
+      <div class="lang-list">
+        <div class="lang-item">
+          <div class="lang-donut"><svg viewBox="0 0 80 80"><circle class="track" cx="40" cy="40" r="33"/><circle class="fill" cx="40" cy="40" r="33" stroke-dasharray="207.3 0" stroke-dashoffset="0"/></svg><div class="lang-donut-pct">100%</div></div>
+          <div class="lang-name">English</div>
+        </div>
+        <div class="lang-item">
+          <div class="lang-donut"><svg viewBox="0 0 80 80"><circle class="track" cx="40" cy="40" r="33"/><circle class="fill" cx="40" cy="40" r="33" stroke-dasharray="207.3 0" stroke-dashoffset="0"/></svg><div class="lang-donut-pct">100%</div></div>
+          <div class="lang-name">Vietnamese</div>
+        </div>
+        <div class="lang-item">
+          <div class="lang-donut"><svg viewBox="0 0 80 80"><circle class="track" cx="40" cy="40" r="33"/><circle class="fill" cx="40" cy="40" r="33" stroke-dasharray="41.5 165.8" stroke-dashoffset="0"/></svg><div class="lang-donut-pct">20%</div></div>
+          <div class="lang-name">Mandarin</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" id="connect">
+  <div class="footer-title">Connect with me</div>
+  <div class="footer-name">Linh Vu</div>
+  <div class="footer-email">linh.nt.vuu@gmail.com</div>
+  <div class="footer-label">Follow me on</div>
+  <div class="social-links">
+    <a href="mailto:linh.nt.vuu@gmail.com" class="social-link" title="Email"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+    <a href="https://www.linkedin.com/in/linhvu11/" target="_blank" class="social-link" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+    <a href="https://github.com/linhvu115" target="_blank" class="social-link" title="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+    <a href="https://www.facebook.com/YOUR_FB" target="_blank" class="social-link" title="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+    <a href="https://medium.com/@YOUR_MEDIUM" target="_blank" class="social-link" title="Medium"><svg viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg></a>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+function toggleCW(btn) {
+  const panel = btn.nextElementSibling;
+  const isOpen = panel.classList.contains('open');
+  btn.classList.toggle('open', !isOpen);
+  panel.classList.toggle('open', !isOpen);
+}
+</script>
+</body>
+</html>
