@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Linh Vu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .drawer-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.28);
+      z-index: 600;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .drawer-overlay.open { opacity: 1; pointer-events: all; }
+    .drawer {
+      position: fixed;
+      top: 0; right: 0; bottom: 0;
+      width: min(440px, 100vw);   /* full width on small screens */
+      background: var(--white);
+      z-index: 700;
+      display: flex; flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+      box-shadow: -2px 0 24px rgba(0,0,0,0.12);
+    }
+    .drawer.open { transform: translateX(0); }
+    .drawer-header {
+      display: flex; align-items: flex-start;
+      justify-content: space-between; gap: 12px;
+      padding: 24px 24px 16px;
+      border-bottom: 1px solid var(--border-subtle);
+      flex-shrink: 0;
+    }
+    .drawer-header-text { flex: 1; min-width: 0; }
+    .drawer-title { font-weight: 700; font-size: 16px; line-height: 1.4; margin-bottom: 5px; }
+    .drawer-meta { font-size: 13.5px; color: var(--text-light); line-height: 1.5; }
+    .drawer-meta em { font-style: italic; }
+    .drawer-year { font-size: 13px; color: var(--text-light); margin-top: 3px; }
+    .drawer-close {
+      flex-shrink: 0; width: 28px; height: 28px;
+      border-radius: 50%; border: 1.5px solid var(--border-subtle);
+      background: none; cursor: pointer; font-size: 14px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-light); transition: all 0.15s; margin-top: 2px;
+    }
+    .drawer-close:hover { border-color: var(--text); color: var(--text); }
+    .drawer-body {
+      flex: 1; overflow-y: auto;
+      padding: 22px 24px 36px;
+    }
+    .drawer-body ul { padding-left: 20px; }
+    .drawer-body li { font-size: 15px; line-height: 1.7; margin-bottom: 9px; }
+    .drawer-body li:last-child { margin-bottom: 0; }
+    .drawer-note { font-size: 13px; font-style: italic; color: var(--text-light); margin-top: 16px; }
+    .drawer-btn {
+      display: inline-block; background: var(--bg-dark); color: white;
+      padding: 10px 22px; border-radius: 30px; font-size: 14px;
+      font-weight: 500; margin-top: 20px; transition: opacity 0.2s;
+    }
+    .drawer-btn:hover { opacity: 0.8; }
+    .project-card.active .project-thumb-placeholder {
+      border-color: var(--bg-dark); background: #ccc9c0;
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <span class="nav-brand">Linh Vu</span>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="projects.html" class="active">Projects</a>
+    <a href="experience.html">Experience</a>
+    <a href="leadership.html">Leadership</a>
+  </div>
+  <div></div>
+</nav>
+<div class="page-hero">
+  <h1>Selected <em>Projects</em></h1>
+  <p>Academic, research, and professional projects — click any card to open details</p>
+</div>
+<section class="section" id="projects">
+  <div class="section-inner">
+    <div class="section-label-wrap reveal">
+      <div class="section-label">All Projects</div>
+      <div class="section-label-hint">Click any card to open details →</div>
+    </div>
+    <div class="section-content">
+      <div class="projects-grid reveal">
+        <div class="project-card" onclick="openDrawer('p-uic',this)"><div class="project-thumb-placeholder">University-Industry Collaboration</div><div class="project-title">University-Industry Collaboration and Student Entrepreneurial Mindset</div><div class="project-year">2025 – 2026</div></div>
+        <div class="project-card" onclick="openDrawer('p-morrisons',this)"><div class="project-thumb-placeholder">Morrisons Supply Chain</div><div class="project-title">Leveraging Industry 4.0 Technologies for Sustainable Supply Chains at Morrisons</div><div class="project-year">2025 – 2026</div></div>
+        <div class="project-card" onclick="openDrawer('p-risk',this)"><div class="project-thumb-placeholder">Enterprise Risk Assessment</div><div class="project-title">Enterprise Risk Assessment: Royal Den Hartogh Logistics Ltd.</div><div class="project-year">2025 – 2026</div></div>
+        <div class="project-card" onclick="openDrawer('p-vw',this)"><div class="project-thumb-placeholder">Volkswagen Group</div><div class="project-title">Corporate Strategy: Volkswagen Group's Portfolio</div><div class="project-year">2025</div></div>
+        <div class="project-card" onclick="openDrawer('p-jet2',this)"><div class="project-thumb-placeholder">Jet2 Marketing</div><div class="project-title">SOSTAC Marketing Strategy for Jet2 PLC</div><div class="project-year">2025</div></div>
+        <div class="project-card" onclick="openDrawer('p-guardians',this)"><div class="project-thumb-placeholder">Cleveland Guardians</div><div class="project-title">Membership Retention Analysis Using a Multi-Class Churn Prediction Model</div><div class="project-year">2023 – 2024</div></div>
+        <div class="project-card" onclick="openDrawer('p-stochastic',this)"><div class="project-thumb-placeholder">Stochastic Optimization</div><div class="project-title">Stochastic Linear Programming for Membership Retention Optimization</div><div class="project-year">2024</div></div>
+        <div class="project-card" onclick="openDrawer('p-bitcoin',this)"><div class="project-thumb-placeholder">Bitcoin LSTM</div><div class="project-title">Bitcoin Closing Price Forecasting Using LSTM Neural Networks</div><div class="project-year">2024</div></div>
+        <div class="project-card" onclick="openDrawer('p-nutriguide',this)"><div class="project-thumb-placeholder">NutriGuide AI Chatbot</div><div class="project-title"><em>NutriGuide:</em> AI-Powered Chatbot for Meal Recommendations</div><div class="project-year">2024</div></div>
+        <div class="project-card" onclick="openDrawer('p-medicare',this)"><div class="project-thumb-placeholder">Medicare Fraud</div><div class="project-title">Medicare Fraud Detection through Big Data and Machine Learning Models</div><div class="project-year">2024</div></div>
+        <div class="project-card" onclick="openDrawer('p-enrollment',this)"><div class="project-thumb-placeholder">Student Enrollment</div><div class="project-title">Student Enrollment Dynamics in the Business Analytics Department</div><div class="project-year">2024</div></div>
+        <div class="project-card" onclick="openDrawer('p-attrition',this)"><div class="project-thumb-placeholder">Employee Attrition</div><div class="project-title">Predicting Employee Attrition Using Logistic Regression</div><div class="project-year">2023</div></div>
+        <div class="project-card" onclick="openDrawer('p-neuron',this)"><div class="project-thumb-placeholder">Neuron Entrainment</div><div class="project-title">Neuron Entrainment: Relationship of Network Neurons and Pulsed Neurons</div><div class="project-year">2023</div></div>
+        <div class="project-card" onclick="openDrawer('p-freshman',this)"><div class="project-thumb-placeholder">Freshman Retention</div><div class="project-title">Predicting Freshman Retention Using Classification Models</div><div class="project-year">2023</div></div>
+        <div class="project-card" onclick="openDrawer('p-factorial',this)"><div class="project-thumb-placeholder">Factorial Experiment</div><div class="project-title">Factorial Experiment: Effects of Airflow and Temperature on Melting Time</div><div class="project-year">2023</div></div>
+        <div class="project-card" onclick="openDrawer('p-netflix',this)"><div class="project-thumb-placeholder">Netflix EDA</div><div class="project-title">Data Analysis and Recommendations on Netflix Content</div><div class="project-year">2022</div></div>
+        <div class="project-card" onclick="openDrawer('p-wagegap',this)"><div class="project-thumb-placeholder">Gender Wage Gap</div><div class="project-title">How Do Other Factors Influence the Gender Wage Gap by Occupation?</div><div class="project-year">2022</div></div>
+        <div class="project-card" onclick="openDrawer('p-expenditure',this)"><div class="project-thumb-placeholder">Consumer Expenditure</div><div class="project-title">A Cross-Year Statistical Analysis of Consumer Expenditure Patterns</div><div class="project-year">2022</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="footer" id="connect">
+  <div class="footer-title">Connect with me</div>
+  <div class="footer-name">Linh Vu</div>
+  <div class="footer-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f39f9a9d9bdd9d87dd858686b3949e929a9fdd909c9e">[email&#160;protected]</a></div>
+  <div class="footer-label">Follow me on</div>
+  <div class="social-links">
+    <a href="/cdn-cgi/l/email-protection#086461666026667c267e7d7d486f65696164266b6765" class="social-link"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+    <a href="https://www.linkedin.com/in/linhvu11/" target="_blank" class="social-link"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+    <a href="https://github.com/linhvu115" target="_blank" class="social-link"><svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+    <a href="https://www.facebook.com/YOUR_FB" target="_blank" class="social-link"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+    <a href="https://medium.com/@YOUR_MEDIUM" target="_blank" class="social-link"><svg viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg></a>
+  </div>
+</footer>
+
+<!-- SIDE DRAWER -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-header">
+    <div class="drawer-header-text">
+      <div class="drawer-title" id="drawerTitle"></div>
+      <div class="drawer-meta" id="drawerMeta"></div>
+      <div class="drawer-year" id="drawerYear"></div>
+    </div>
+    <button class="drawer-close" onclick="closeDrawer()">&#x2715;</button>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="shared.js"></script>
+<script>
+const projects = {
+  'p-uic': { title: 'University-Industry Collaboration and Student Entrepreneurial Mindset Development in Vietnam', meta: 'Graduate Dissertation (In Progress), <em>Master of Science in Management</em>', year: '2025 – 2026', bullets: ['Investigates how Vietnamese university leaders strategically design university-industry collaboration mechanisms to cultivate entrepreneurial mindset among students.','Addresses gaps in literature on human capital development and the practical problem of graduate employability and entrepreneurship readiness in emerging knowledge economies.','Employs qualitative primary research methodology: semi-structured interviews with senior academic and industry leaders across Vietnamese institutions, thematic analysis, and grounded theory coding.','Scope: Vietnamese higher education; strategic management; entrepreneurship education; qualitative research design; human capital development.'] },
+  'p-morrisons': { title: "Leveraging Industry 4.0 Technologies for Sustainable Supply Chains at Morrisons", meta: 'Final Report, Module <em>Operations and Logistics Management</em>, MSc Management', year: '2025 – 2026', bullets: ["Analyzed Morrisons' vertically integrated supply chain using Fisher's responsive/efficient framework, legality theory, and Transaction Cost Economics (TCE) to evaluate operational performance gaps.",'Applied Kraljic Matrix and JIT/lean-agile frameworks to supplier segmentation and push-pull inventory strategy.','Proposed three digitalization recommendations: SAP S/4HANA ERP consolidation (enabling ML-based demand forecasting), RFID/IoT cold chain tracking, and a Supplier Digital Capability Program.'] },
+  'p-risk': { title: 'Enterprise Risk Assessment: Royal Den Hartogh Logistics Ltd.', meta: 'Final Report, Module <em>Risk Management</em>, MSc Management', year: '2025 – 2026', bullets: ['Conducted a structured ISO 31000-compliant enterprise risk assessment, developing a 27-entry Risk Breakdown Structure (RBS) across strategic, operational, financial, compliance, and external domains.','Applied the FIRM scorecard to quantify impact and identified critical risk clusters including driver shortage, zero-emission fleet transition lag, and cross-border regulatory exposure.','Proposed prioritized mitigation strategies aligned with board-level risk appetite and ERM governance requirements.'] },
+  'p-vw': { title: "Corporate Strategy: Volkswagen Group's Portfolio", meta: 'Final Assessment, Module <em>Corporate Strategy</em>, MSc Management', year: '2025', bullets: ["Analyzed Volkswagen's portfolio during the EV transition using BCG Matrix, GE–McKinsey Directional Policy Matrix, and Parenting Matrix.","Applied Change Kaleidoscope, Forcefield Analysis, and Kotter's Eight-Step Model to evaluate Volkswagen's strategic transformation program and assessed framework limitations across institutional and cultural contexts."] },
+  'p-jet2': { title: 'SOSTAC Marketing Strategy for Jet2 PLC', meta: 'Final Report, Module <em>Contemporary Marketing</em>, MSc Management', year: '2025', bullets: ['Developed a full SOSTAC-framework marketing plan for Jet2 PLC targeting growth in the UK leisure travel sector.',"Situational analysis applied PESTEL and Porter's Five Forces to identify key market challenges including economic uncertainty, sustainability pressure, and competitive intensity from low-cost carriers.",'Formulated three SMART marketing objectives using the Ansoff Matrix: grow Jet2holidays bookings by 15%, increase online bookings to 85%, boost sustainability communications engagement by 25% — all within 12–18 months.','Designed integrated tactical recommendations and an implementation timeline with KPIs aligned to each objective.'] },
+  'p-guardians': { title: 'Membership Retention Analysis Using a Multi-Class Churn Prediction Model', meta: 'Graduate Capstone Practicum, <em>MSc Business Analytics</em>', year: '2023 – 2024', bullets: ['Engaged directly with the Director of Business Analytics of Cleveland Guardians to address an estimated $1–5M annual revenue challenge from non-renewed season ticket membership.','Designed a multi-class prediction framework extending the team\'s existing binary churn model.','Conducted extensive EDA using Python/Pandas on 10,000+ customer records; performed feature engineering across attendance patterns, engagement scores, spending velocity, and seat location variables.','Built and evaluated multi-class classification models (logistic regression, random forest, gradient boosting, XGBoost) using scikit-learn, achieving 82% overall accuracy predicting 4 retention outcomes.','Presented findings and recommendations directly to client stakeholders.'], note: '* Cleveland Guardians is an American professional baseball team competing in Major League Baseball (MLB).' },
+  'p-stochastic': { title: 'Stochastic Linear Programming for Membership Retention Optimization', meta: 'Final Project, <em>Systems Modeling and Optimization</em>, MSc Business Analytics', year: '2024', bullets: ['Formulated a two-scenario stochastic linear programming model to optimize sales resource allocation (emails, calls, CRM emails, touchpoints) to maximize season ticket member renewals.','Derived objective function coefficients from two separate linear regression models; implemented and solved using Excel Solver with sensitivity analysis.','Model projected a potential customer base growth to 14,836 renewals before diminishing returns.'] },
+  'p-bitcoin': { title: 'Bitcoin Closing Price Forecasting Using LSTM Neural Networks', meta: 'Individual Project, <em>Machine Learning Applications in Business</em>, MSc Business Analytics', year: '2024', bullets: ['Downloaded and processed full historical BTC-USD price data using the yfinance API.','Applied MinMax scaling and constructed 60-day lookback windows for time-series input.','Trained a two-layer LSTM neural network (50 units per layer) using TensorFlow/Keras on a 95% training split with Adam optimizer and MSE loss.','Generated out-of-sample forecasts and visualized price trajectory projections.'] },
+  'p-nutriguide': { title: 'NutriGuide: AI-Powered Chatbot for Meal Recommendations', meta: 'Final Project, <em>Big Data Analytics and Artificial Intelligence</em>, MSc Business Analytics', year: '2024', bullets: ['Designed an AI chatbot for personalized meal recommendations using 1.4M+ reviews from 270K+ users against a database of 520K+ recipes across 300+ categories.','Normalized and exported data to a MySQL database hosted on AWS RDS; implemented a K-NN recommendation model with nutritional feature engineering.','Architected chatbot on AWS Lex with NLP, AWS Lambda fulfilment logic, and a WordPress/Kommunicate front-end interface.','Built full data pipeline in Python (Pandas, SQLAlchemy, PyMySQL) for data ingestion, transformation, and database operations.'] },
+  'p-medicare': { title: 'Medicare Fraud Detection through Big Data and Machine Learning Models', meta: 'Final Project, <em>Managing Big Data</em>, MSc Business Analytics', year: '2024', bullets: ['Integrated 500K+ records from multiple large datasets (Medicare Part D, CMS Open Payments, and LEIE exclusions) using Python/Pandas and SQL.','Engineered 20+ features and developed classification models (decision trees, random forest, XGBoost) achieving 90% precision and recall.','Published on Medium and reached 560+ views.'], link: { text: 'Read on Medium', url: '#' } },
+  'p-enrollment': { title: 'Student Enrollment Dynamics in the Business Analytics Department', meta: 'Final Project, <em>Communicating with Data</em>, BSc Data Science & Statistics', year: '2024', bullets: ['Investigated enrollment patterns, student mobility, demographic composition, and grade distributions using enrollment records from 2019 to 2024.','Conducted EDA covering gender distribution, first-generation student share, class level, cohort size trends, and course-level grade distributions.','Built a logistic regression model to predict the probability of a student changing their major.'] },
+  'p-attrition': { title: 'Predicting Employee Attrition Using Logistic Regression', meta: 'Final Project, <em>Regression Analysis</em>, BSc Data Science & Statistics', year: '2023', bullets: ['Analyzed an IBM HR dataset of 1K+ employees using logistic regression to identify significant predictors of voluntary attrition across job attributes, demographics, and performance indicators.','Conducted systematic variable selection via stepwise procedures and likelihood ratio tests; produced a final model with 10 significant predictors.','Interpreted odds ratios and 95% confidence intervals to generate actionable HR intervention priorities.'] },
+  'p-neuron': { title: 'Neuron Entrainment: Relationship of Network Neurons and Pulsed Neurons', meta: 'Undergraduate Capstone Practicum, <em>BSc Data Science & Statistics</em>', year: '2023', bullets: ['Collaborated with a biology research group to apply linear regression, intraclass correlation coefficient (ICC), generalized linear model (GLM), and generalized additive model (GAM) in R.','Performed model comparison via Chi-square and likelihood ratio tests to investigate whether frequency relationships differ across neuron types.','Published on Medium.'], link: { text: 'Read on Medium', url: '#' } },
+  'p-freshman': { title: 'Predicting Freshman Retention Using Classification Models', meta: 'Individual Project, <em>Introduction to Data Mining in Business</em>, BSc Data Science & Statistics', year: '2023', bullets: ['Tasked by the Director of Enrollment Research and Analysis to assign a probability of non-retention to each incoming freshman to enable targeted early-intervention support.','Performed extensive data preprocessing and applied Stratified Shuffle Split (80/20) with SMOTE to address class imbalance.','Trained and evaluated five classification models using GridSearchCV with 5-fold cross-validation; compared models on accuracy, precision, recall, F1 score, and AUC.'] },
+  'p-factorial': { title: 'Factorial Experiment: Effects of Airflow and Temperature on Melting Time', meta: 'Final Project, <em>Experimental Design Methods</em>, BSc Data Science & Statistics', year: '2023', bullets: ['Designed a 3x3 full-factorial experiment with color as a blocking variable; applied a Randomized Complete Block Design (RCBD) with two replications across nine treatment combinations.','Conducted model assumption checking (normality, Tukey additivity test, residual diagnostics), ANOVA, and Tukey pairwise comparisons.','Produced a full statistical report including literature review, experimental protocol, analysis outputs, and diagnostic plot appendices.'] },
+  'p-netflix': { title: 'Data Analysis and Recommendations on Netflix Content', meta: 'Individual Project, selected as a Finalist of <em>Meta\'s Data Challenge</em>', year: '2022', bullets: ['Analyzed nearly 8.8K Netflix movie and TV show titles for comprehensive EDA across growth trends, content by country, genre distribution, ratings, target audience, and title/description patterns.','Created interactive visualizations using Plotly (world maps), Matplotlib, and Seaborn to communicate content strategy insights.','Published on Medium and reached 6.6K+ views and 3.5K+ reads.'], link: { text: 'Read on Medium', url: '#' } },
+  'p-wagegap': { title: 'How Do Other Factors Influence the Gender Wage Gap by Occupation?', meta: 'Final Project, <em>Economic Data and Models</em>, BSc Data Science & Statistics', year: '2022', bullets: ['Analyzed nearly 7.8K observations from the NLSY97 and built multiple regression models controlling for education, experience, race, and family status variables across occupational categories.','Identified occupation-level wage gap variation and a statistically significant "motherhood penalty" effect beyond raw gender differentials.','Published on Medium.'], link: { text: 'Read on Medium', url: '#' } },
+  'p-expenditure': { title: 'A Cross-Year Statistical Analysis of Consumer Expenditure Patterns', meta: 'Final Project, <em>Advanced Data Visualization</em>, BSc Data Science & Statistics', year: '2022', bullets: ['Analyzed US consumer spending patterns using BLS Consumer Expenditure Survey data for Q4 2020 and Q4 2021.','Produced statistical comparisons and data visualizations covering expenditure category shifts, age-group and generational differences, and post-COVID economic recovery trends.','Published on Medium.'], link: { text: 'Read on Medium', url: '#' } }
+};
+
+let activeCard = null;
+
+function openDrawer(id, cardEl) {
+  const p = projects[id];
+  if (!p) return;
+  // deactivate previous card
+  if (activeCard) activeCard.classList.remove('active');
+  activeCard = cardEl;
+  cardEl.classList.add('active');
+  // populate
+  document.getElementById('drawerTitle').textContent = p.title;
+  document.getElementById('drawerMeta').innerHTML = p.meta || '';
+  document.getElementById('drawerYear').textContent = p.year || '';
+  let html = '<ul>';
+  p.bullets.forEach(b => { html += `<li>${b}</li>`; });
+  html += '</ul>';
+  if (p.note) html += `<p class="drawer-note">${p.note}</p>`;
+  if (p.link) html += `<a href="${p.link.url}" target="_blank" class="drawer-btn">${p.link.text}</a>`;
+  document.getElementById('drawerBody').innerHTML = html;
+  // scroll to top of body
+  document.getElementById('drawerBody').scrollTop = 0;
+  // open
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('drawerOverlay').classList.add('open');
+}
+
+function closeDrawer() {
+  document.getElementById('drawer').classList.remov
